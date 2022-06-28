@@ -64,7 +64,9 @@ export function ConversationsProvider({ id, children }) {
 
     useEffect(() => {
         if (socket == null) return;
+
         socket.on("receive-message", addMessageToConversation);
+
         return () => socket.off("receive-message");
     }, [socket, addMessageToConversation]);
 

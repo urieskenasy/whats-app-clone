@@ -16,7 +16,6 @@ function App() {
                     <Dashboard id={id} />
                 </ConversationsProvider>
             </ContactsProvider>
-            /{" "}
         </SocketProvider>
     );
 

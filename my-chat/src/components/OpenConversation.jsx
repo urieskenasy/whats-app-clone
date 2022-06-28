@@ -4,8 +4,6 @@ import { useConversations } from "../contexts/ConversationsProvider";
 
 export default function OpenConversation() {
     const [text, setText] = useState("");
-
-    // function to make the view port go down when i send a message
     const setRef = useCallback((node) => {
         if (node) {
             node.scrollIntoView({ smooth: true });
@@ -22,7 +20,7 @@ export default function OpenConversation() {
         );
         setText("");
     }
-
+    console.log(selectedConversation);
     return (
         <div className="d-flex flex-column flex-grow-1">
             <div className="flex-grow-1 overflow-auto">
@@ -73,9 +71,9 @@ export default function OpenConversation() {
                             onChange={(e) => setText(e.target.value)}
                             style={{ height: "75px", resize: "none" }}
                         />
-                        <InputGroup.Append>
-                            <Button type="submit">Send</Button>
-                        </InputGroup.Append>
+                        {/* <InputGroup.Append> */}
+                        <Button type="submit">Send</Button>
+                        {/* </InputGroup.Append> */}
                     </InputGroup>
                 </Form.Group>
             </Form>

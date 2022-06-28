@@ -1,14 +1,21 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
-import { useContacts } from "../contexts/ContactsProvider";
+import { useConversations } from "../contexts/ConversationsProvider";
 
-export default function Contacts() {
-    const { contacts } = useContacts();
+export default function Conversations() {
+    const { conversations, selectConversationIndex } = useConversations();
 
     return (
         <ListGroup variant="flush">
-            {contacts.map((contact) => (
-                <ListGroup.Item key={contact.id}>{contact.name}</ListGroup.Item>
+            {conversations.map((conversation, index) => (
+                <ListGroup.Item
+                    key={index}
+                    action
+                    onClick={() => selectConversationIndex(index)}
+                    active={conversation.selected}
+                >
+                    {conversation.recipients.map((r) => r.name).join(", ")}
+                </ListGroup.Item>
             ))}
         </ListGroup>
     );
